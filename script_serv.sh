@@ -1,4 +1,4 @@
-#!/bin/bash
+:q#!/bin/bash
 echo "Установка nfs-utils"
 yum install nfs-utils
 echo "Sleeping for 5 seconds…"
@@ -41,4 +41,10 @@ firewall-cmd --permanent --zone=public --add-service=rpc-bind
 firewall-cmd --reload
 echo "Готово!!!!Урааа!!!"
 echo "==========================================================================="
+
+#####
+1) 111/udp 20048/udp 47357/udp 38743/udp 2049/udp
+firewall-cmd --zone=public --add-port=20048/udp --permanent
+2) Добавить в файл конфигурации /etc/sysconfig/nfs
+3) Понять как запусть vagrant provosion на отдельной машине 
 
