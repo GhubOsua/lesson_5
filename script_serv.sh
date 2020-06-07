@@ -1,4 +1,4 @@
-:q#!/bin/bash
+#!/bin/bash
 echo "Установка nfs-utils"
 yum install nfs-utils
 echo "Sleeping for 5 seconds…"
