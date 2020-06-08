@@ -45,16 +45,16 @@ Vagrant.configure("2") do |config|
 
     MACHINES1.each do |boxname, boxconfig|
   
-        config.vm.define boxname do |box|
+        config.vm.define boxname do |box1|
   
-            box.vm.box = boxconfig[:box_name]
-            box.vm.host_name = boxname.to_s
+            box1.vm.box = boxconfig[:box_name]
+            box1.vm.host_name = boxname.to_s
   
             #box.vm.network "forwarded_port", guest: 3260, host: 3260+offset
   
-            box.vm.network "private_network", ip: boxconfig[:ip_addr]
+            box1.vm.network "private_network", ip: boxconfig[:ip_addr]
   
-            box.vm.provider :virtualbox do |vb|
+            box1.vm.provider :virtualbox do |vb|
                     vb.customize ["modifyvm", :id, "--memory", "2048"]
 		    vb.cpus = boxconfig[:cpus]
                     needsController = false
@@ -71,9 +71,10 @@ Vagrant.configure("2") do |config|
                            vb.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', dconf[:port], '--device', 0, '--type', 'hdd', '--medium', dconf[:dfile]]
                        end
                     end
+	    
             end
 	config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
-	config.vm.provision "shell", path: "script_serv.sh"	  
+	box1.vm.provision "shell", path: "script_serv.sh"	  
         #box.vm.provision "shell", inline: <<-SHELL
             #mkdir -p ~root/.ssh
             #cp ~vagrant/.ssh/auth* ~root/.ssh
@@ -86,16 +87,16 @@ Vagrant.configure("2") do |config|
 
     MACHINES2.each do |boxname, boxconfig|
   
-        config.vm.define boxname do |box|
+        config.vm.define boxname do |box2|
   
-            box.vm.box = boxconfig[:box_name]
-            box.vm.host_name = boxname.to_s
+            box2.vm.box = boxconfig[:box_name]
+            box2.vm.host_name = boxname.to_s
   
             #box.vm.network "forwarded_port", guest: 3260, host: 3260+offset
   
-            box.vm.network "private_network", ip: boxconfig[:ip_addr]
+            box2.vm.network "private_network", ip: boxconfig[:ip_addr]
   
-            box.vm.provider :virtualbox do |vb|
+            box2.vm.provider :virtualbox do |vb|
                     vb.customize ["modifyvm", :id, "--memory", "2048"]
 		    vb.cpus = boxconfig[:cpus]
                     needsController = false
@@ -114,7 +115,7 @@ Vagrant.configure("2") do |config|
                     end
             end
 	config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
-	config.vm.provision "shell", path: "script_client.sh"		
+	box2.vm.provision "shell", path: "script_client.sh"		
         #box.vm.provision "shell", inline: <<-SHELL
             #mkdir -p ~root/.ssh
             #cp ~vagrant/.ssh/auth* ~root/.ssh

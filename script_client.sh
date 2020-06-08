@@ -14,8 +14,8 @@ echo "==========================================================================
 
 echo "==========================================================================="
 echo "Монтирование ФС"
-#mount -t nfs -o rw,vers=3,soft,noatime,nodiratime,nodev,noexec,nosuid,timeo=300,rsize=32768O,wsize=32768  192.168.11.101:/nfs_share /mnt/share_client
-echo "192.168.11.101:/nfs_share /mnt/share_client nfs -o rw,vers=3,soft,noatime,nodiratime,nodev,noexec,nosuid 0 0" >> /etc/fstab
+mount -t nfs -o rw,vers=3,udp,soft,noatime,nodiratime,nodev,noexec,nosuid,timeo=300,rsize=1048576,wsize=1048576  192.168.11.101:/nfs_share /mnt/share_client
+echo "192.168.11.101:/nfs_share /mnt/share_client nfs -o rw,vers=3,udp,soft,noatime,nodiratime,nodev,noexec,nosuid,timeo=300,rsize=1048576,wsize=1048576 0 0" >> /etc/fstab
 echo "==========================================================================="
 
 df -hT

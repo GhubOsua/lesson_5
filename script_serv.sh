@@ -46,7 +46,7 @@ echo -e "Готово!!!!Урааа!!!\n\n\n"
 echo "==========================================================================="
 
 echo "Устанавливаем конкретные порты NFS для firewall"
-echo -e "RPCNFSDARGS=\"--port 2049\" \nMOUNTD_PORT=20048 \nLOCKD_TCPPORT=47357 \nLOCKD_UDPPORT=47357 \nSTATD_PORT=38743"
+echo -e 'RPCNFSDARGS="--port 2049" \nMOUNTD_PORT=20048 \nLOCKD_TCPPORT=47357 \nLOCKD_UDPPORT=47357 \nSTATD_PORT=38743' >> /etc/sysconfig/nfs
 echo -e "Готово!!!!Урааа!!!\n\n\n"
 echo "==========================================================================="
 
@@ -55,12 +55,3 @@ systemctl start rpcbind nfs-server
 sleep 5
 echo -e "Готово!!!!Урааа!!!\n\n\n"
 echo "==========================================================================="
-
-
-
-#####
-1) 111/udp 20048/udp 47357/udp 38743/udp 2049/udp
-firewall-cmd --zone=public --add-port=20048/udp --permanent
-2) Добавить в файл конфигурации /etc/sysconfig/nfs
-3) Понять как запусть vagrant provosion на отдельной машине 
-
