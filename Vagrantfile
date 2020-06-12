@@ -12,13 +12,13 @@ MACHINES1 = {
     :disks => {
         :sata1 => {
             #:dfile => Virtual+'/lesson5/sata1_nfs_server.vdi',
-	    :dfile => ./sata1_nfs_server.vdi',
+	    :dfile => './sata1_nfs_server.vdi',
             :size => 1024, # Megabytes
             :port => 1
         },
         :sata2 => {
             #:dfile => Virtual+'/lesson5/sata2_nfs_server.vdi',
-            :dfile => ./sata2_nfs_server.vdi',
+            :dfile => './sata2_nfs_server.vdi',
             :size => 1024, # Megabytes
             :port => 2
         }
@@ -34,7 +34,7 @@ MACHINES2 = {
     :disks => {
         :sata1 => {
             #:dfile => Virtual+'/lesson5/sata1_nfs_client.vdi',
-            :dfile => ./sata1_nfs_client.vdi',		
+            :dfile => './sata1_nfs_client.vdi',		
             :size => 1024, # Megabytes
             :port => 1
               }
